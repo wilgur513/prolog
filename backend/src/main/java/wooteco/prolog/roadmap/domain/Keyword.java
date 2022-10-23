@@ -1,4 +1,4 @@
-package wooteco.prolog.roadmap;
+package wooteco.prolog.roadmap.domain;
 
 import java.util.ArrayList;
 import java.util.List;

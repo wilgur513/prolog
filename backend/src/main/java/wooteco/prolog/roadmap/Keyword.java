@@ -33,7 +33,7 @@ public class Keyword {
     private String description;
 
     @Column(nullable = false)
-    private int order;
+    private int seq;
 
     @Column(nullable = false)
     private int importance;
@@ -46,21 +46,21 @@ public class Keyword {
     private Keyword parent;
 
     @BatchSize(size = 1000)
-    @OneToMany(mappedBy = "keyword", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "children", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Keyword> children = new ArrayList<>();
 
     public Keyword(final Long id,
                    final String name,
                    final String description,
-                   final int order,
+                   final int seq,
                    final int importance,
                    final Long sessionId,
                    final Keyword parent) {
-        validateOrder(order);
+        validateOrder(seq);
         this.id = id;
         this.name = name;
         this.description = description;
-        this.order = order;
+        this.seq = seq;
         this.importance = importance;
         this.sessionId = sessionId;
         this.parent = parent;
